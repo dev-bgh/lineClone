@@ -1,0 +1,2 @@
+# lineClone
+line clone coding
