@@ -1,26 +1,29 @@
 import React from 'react';
-import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView } from 'react-native';
+import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView, createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Home = ({ navigation }) => {
+const Login = () => {
   return (
     <View style={styles.container}>
         <View style={styles.containerWrapper}>
-          <View style={{flex:1, justifyContent:"center", alignItems: "center"}}>
-            <Image style={{width: 100, height: 100, alignSelf:"center"}} source={require("../assets/image/lineIcon.png")} />
+            <View style ={styles.backSpace}>
+                <Icon name="angle-left" size={35} style={{margin: 10}}/>
+            </View>
+          <View style={{flex:1}}>
             <Text style={styles.h1}>
-              <Text style={styles.mainText}>환영합니다.</Text>
-              <Text style={styles.supText}>{"\n"}무료 메시지와 영상통화, 음성통화를 부담 없이{"\n"}즐겨보세요!</Text>
+              <Text style={styles.mainText}>LINE 로그인</Text>
+              <Text style={styles.supText}>{"\n"}LINE을 시작하려면 이메일로 로그인해주세요.{"\n"}{"\n"}LINE 계정에 Facebook을 연결한 경우 해당 방법으로도 로그인할 수 있습니다.</Text>
             </Text>
           </View>
           <View style={styles.btnWrapper}>
             <View style ={styles.btn}>
               <TouchableOpacity style={[styles.btnSignIn]} onPress={()=>{navigation.navigate('Login')}}>
-                <Text style={[styles.btnText, styles.btnSignInText]}>로그인</Text>
+                <Text style={[styles.btnText, styles.btnSignInText]}>이메일로 로그인</Text>
               </TouchableOpacity>
             </View>
             <View style ={styles.btn}>
               <TouchableOpacity style={[styles.btnSignUp]} onPress={()=>{navigation.navigate('SignUp')}}>
-                <Text style={[styles.btnText]}>가입</Text>
+                <Text style={[styles.btnText, styles.btnSignInText ]}>Facebook으로 로그인</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -43,8 +46,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor: "#FFFFFF",
     height:"100%",
-    
-},
+    },
+  backSpace: {
+    width: '100%',
+    height: 50
+    },
   btnWrapper: {
     width:"100%",
     alignItems:"center",
@@ -53,9 +59,8 @@ const styles = StyleSheet.create({
 
   },
   h1: {
-    marginTop: 20,
+    margin: 30,
     letterSpacing: -0.3,
-    textAlign: "center",
 },
   mainText: {
     fontWeight: "bold", 
@@ -96,14 +101,15 @@ const styles = StyleSheet.create({
 
   btnSignUp: {
     justifyContent: 'center',
-    width: '100%',
-    height: 40,
+    width: '85%',
+    height: 45,
     marginTop: 10,
     marginBottom: 30,
-    backgroundColor: "#ffffff",
-    borderColor: "#000000"
+    backgroundColor: "blue",
+    borderColor: "#000000",
+    borderRadius: 5,
   },
 });
 
 
-export default Home;
+export default Login;

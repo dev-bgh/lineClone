@@ -1,17 +1,13 @@
 import React from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import Home from './src/routers/Home';
+import Login from './src/routers/Login';
+import Email from './src/routers/Email';
 
 function App() {
   return (
-     <Home />
-  );
+    <Email/>
+    );
 };
 
 const styles = StyleSheet.create({
