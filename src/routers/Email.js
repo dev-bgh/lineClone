@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView } from 'react-native';
+import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CheckBox from '@react-native-community/checkbox';
+import CustomModal, { ModalAsk } from '../components/CustomModal';
 
 const Email = ({ navigation }) => {
-  const [value, onChangeText] = React.useState('Useless Placeholder');
   const [isSelected, setSelection] = useState(false);
+  const [isLineAgree, setIsLineAgree ] = useState(false);
+  const [isUserAgree, setIsUserAgree ] = useState(false);
+  const [ email, setEmail ] = useState("");
+  const [ isVisible, setIsVisible ] = useState(false);
+
+  function setEmailInput( text ){ 
+    setEmail(text);
+  }
 
   return (
     <View style={styles.container}>
         <View style={styles.containerWrapper}>
           <View style ={styles.backSpace}>
-              <Icon name="angle-left" size={35} style={{margin: 10}} onPress={()=>{ navigation.pop() }}/>
+              <Icon name="angle-left" size={35} style={{margin: 10}} onPress={()=>{ navigation.goBack() }}/>
           </View>
           <View style={{flex:1}}>
             <Text style={styles.h1}>
@@ -23,7 +31,7 @@ const Email = ({ navigation }) => {
                     keyboardType="email-address"  
                     style={[styles.textInput]} 
                     placeholder={"이메일 계정을 입력해주세요."}
-                  //  onChangeText={(text)=>{setEmail(text)}} onFocus={()=>{setFocusedInput("email")}} onBlur={()=>{setFocusedInput("")}}
+                    onChangeText={(text)=>{setEmailInput(text)}}
                     />
             </View>
             <View style={styles.checkboxContainer}>
@@ -36,16 +44,16 @@ const Email = ({ navigation }) => {
             </View>
             <View style={styles.checkboxContainer}>
               <CheckBox
-                value={isSelected}
-                onValueChange={setSelection}
+                value={isLineAgree}
+                onValueChange={setIsLineAgree}
                 style={styles.checkbox}
               />
               <Text style={styles.label}>LINE 이용약관에 동의합니다.</Text>
             </View>
             <View style={styles.checkboxContainer}>
               <CheckBox
-                value={isSelected}
-                onValueChange={setSelection}
+                value={isUserAgree}
+                onValueChange={setIsUserAgree}
                 style={styles.checkbox}
               />
               <Text style={styles.label}>LINE 개인정보 처리방침에 동의합니다.</Text>
@@ -54,8 +62,17 @@ const Email = ({ navigation }) => {
         <View>
       </View>
     <View>
-      <Icon name="arrow-circle-right" size={70} style={{ position:"relative", left: 150, margin: 20 }} onPress={()=>{ navigation.pop() }}/>
+      { isSelected && isLineAgree && isUserAgree ? 
+      <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ setIsVisible(true)}}/>
+      :<Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ ToastAndroid.show("체크를 완료해주세요.", 1) }}/>
+      }
     </View>
+    <CustomModal visible={isVisible} >
+      <ModalAsk
+          title={<Text>{email}{"\n"} 이 이메일로 인증번호를 보냅니다. </Text>}
+          onConfirm={() => {navigation.navigate('Auth'); setIsVisible(false);}}
+          onCancel={ () => setIsVisible(false)}/>
+    </CustomModal>
   </View>
 </View> 
   );
