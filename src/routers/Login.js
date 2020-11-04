@@ -2,20 +2,12 @@ import React from 'react';
 import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView, createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-<<<<<<< HEAD
 const Login = ({ navigation }) => {
-=======
-const Login = () => {
->>>>>>> eb10738e167be56cf5c1d865dd2ad2c0e7a1d9e6
   return (
     <View style={styles.container}>
         <View style={styles.containerWrapper}>
             <View style ={styles.backSpace}>
-<<<<<<< HEAD
                 <Icon name="angle-left" size={35} style={{margin: 10}} onPress={()=>{ navigation.pop() }}/>
-=======
-                <Icon name="angle-left" size={35} style={{margin: 10}}/>
->>>>>>> eb10738e167be56cf5c1d865dd2ad2c0e7a1d9e6
             </View>
           <View style={{flex:1}}>
             <Text style={styles.h1}>
@@ -25,20 +17,12 @@ const Login = () => {
           </View>
           <View style={styles.btnWrapper}>
             <View style ={styles.btn}>
-<<<<<<< HEAD
               <TouchableOpacity style={[styles.btnSignIn]} onPress={()=>{navigation.navigate('Email')}}>
-=======
-              <TouchableOpacity style={[styles.btnSignIn]} onPress={()=>{navigation.navigate('Login')}}>
->>>>>>> eb10738e167be56cf5c1d865dd2ad2c0e7a1d9e6
                 <Text style={[styles.btnText, styles.btnSignInText]}>이메일로 로그인</Text>
               </TouchableOpacity>
             </View>
             <View style ={styles.btn}>
-<<<<<<< HEAD
               <TouchableOpacity style={[styles.btnSignUp]} onPress={()=>console.log("미완성")}>
-=======
-              <TouchableOpacity style={[styles.btnSignUp]} onPress={()=>{navigation.navigate('SignUp')}}>
->>>>>>> eb10738e167be56cf5c1d865dd2ad2c0e7a1d9e6
                 <Text style={[styles.btnText, styles.btnSignInText ]}>Facebook으로 로그인</Text>
               </TouchableOpacity>
             </View>
