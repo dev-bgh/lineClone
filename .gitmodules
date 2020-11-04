@@ -1,0 +1,3 @@
+[submodule "lineclone"]
+	path = lineclone
+	url = https://99geometry@bitbucket.org/99geometry/lineclone.git
