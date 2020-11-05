@@ -5,9 +5,9 @@ Clone App for Line
 * Login
   - Main
   - Login
-	- SignIn
+  - SignIn
 	
 * Main
   - Home
   - Chat
-	- Setting
+  - Setting
