@@ -3,10 +3,10 @@ Clone App for [Line](https://line.me/ko/)
 
 # todo List
 * Login
-  + Main Page
-  + Login
-  + Email Input Page
-  + Email Auth Page
+  - Main Page  
+  - Login
+  - Email Input Page
+  - Email Auth Page
   - Facebook Login
 	
 * Main
@@ -15,4 +15,8 @@ Clone App for [Line](https://line.me/ko/)
   - Setting
   - TimeLine
 
-# ~ Ing
+# Start
+  - git clone 
+  - npm insatll
+  - android studio connect
+  - cmd -> react-native run-android
