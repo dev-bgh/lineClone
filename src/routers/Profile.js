@@ -12,12 +12,12 @@ const Profile = ({ navigation }) => {
   }
 
   function pickImg() { 
+
     const options = {
-        title: 'Load Photo',
-        storageOptions: {
-          skipBackup: true,
-          path: 'images',
-        },
+        title: '사진',
+        takePhotoButtonTitle: '카메라',
+        chooseFromLibraryButtonTitle: '이미지 선택',
+        cancelButtonTitle: '취소'
       };
       ImagePicker.showImagePicker(options, (response) => {
         console.log('Response = ', response);
