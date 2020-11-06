@@ -3,6 +3,7 @@ import Home from '../routers/Home';
 import Login from '../routers/Login';
 import Email from '../routers/Email';
 import Auth from '../routers/Auth';
+import Profile from '../routers/Profile';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import 'react-native-gesture-handler';
@@ -22,7 +23,8 @@ function Router() {
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Email" component={Email}/>
-                <Stack.Screen name="Auth" component={Auth} i/>
+                <Stack.Screen name="Auth" component={Auth} />
+                <Stack.Screen name="Profile" component={Profile} />
             </Stack.Navigator>
         </NavigationContainer>
     );

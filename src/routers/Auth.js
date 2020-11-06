@@ -34,7 +34,7 @@ const Auth = ({ navigation }) => {
       </View>
     <View>
       { auth.length == 6 ? 
-      <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 300, margin: 40 }} onPress={()=>{ console.log("성공") }}/>
+      <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 300, margin: 40 }} onPress={()=>{ navigation.navigate('Profile') }}/>
       :<Icon name="exclamation" size={60} style={{ position:"relative", left: 300, margin: 40 }} onPress={()=>{ ToastAndroid.show("정확한 인증번호를 입력해주세요.", 1) }}/>
       }
     </View>
