@@ -108,20 +108,9 @@ const styles = StyleSheet.create({
       width: 130,
       height: 130
   },
-  inputBox: {
-       fontSize: 30,
-       color:'#000000',
-  },
-  label: {
-    fontWeight: "bold", 
-    fontSize: 20,
-    color: "#000000",
-},
   textInput: {
-    padding: 0,
-    paddingBottom: 3,
-    lineHeight: 20,
-    fontSize: 16,
+    paddingTop: 10 ,
+    fontSize: 17,
   },
   backSpace: {
     width: '100%',
