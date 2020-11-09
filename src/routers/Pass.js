@@ -5,15 +5,25 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Pass = ({ navigation }) => {
   const [ pass, setPass ] = useState("");
   const [ passCehck, setPassCheck ] = useState(false);
-
+  const [ isPass, setIsPass ] = useState(false);
   function setPassInput( text ){ 
-    setPass(text);
+    if(isCheckPassword(text) ) { 
+        setIsPass(true);
+        setPass(text);
+    }
   }
 
   function setPassCheckInput ( text ) { 
     setPassCheck(text);
   }
 
+  function isCheckPassword(asValue) {
+
+	var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,10}$/; //  8 ~ 10자 영문, 숫자 조합
+
+	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
+
+  }
 
   return (
     <View style={styles.container}>
@@ -44,10 +54,11 @@ const Pass = ({ navigation }) => {
             </View>
       </View>
     <View>
-      { pass === passCehck ? 
-      <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ setIsVisible(true)}}/>
-      :<Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ ToastAndroid.show("체크를 완료해주세요.", 1) }}/>
-      }
+      { 
+      isPass ? 
+        pass === passCehck ? <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ navigation.navigate('ChatHome') }}/>
+                           : <Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ ToastAndroid.show("비밀번호가 같지 않습니다.", 1) }}/>
+       : <Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ ToastAndroid.show("비밀번호는 최소 6자리에 영문자와 숫자가 최소 하나씩 포함되어야 합니다.", 1) }}/>}
     </View>
   </View>
 </View> 

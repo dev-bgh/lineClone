@@ -10,11 +10,20 @@ const Email = ({ navigation }) => {
   const [isUserAgree, setIsUserAgree ] = useState(false);
   const [ email, setEmail ] = useState("");
   const [ isVisible, setIsVisible ] = useState(false);
+  const [ isEmail, setIsEmail ] = useState(false);
 
   function setEmailInput( text ){ 
-    setEmail(text);
+    if( isEmailCheck(text) ) { 
+      setEmail(text)
+      setIsEmail(true);
+    }
   }
 
+  function isEmailCheck(asValue) {
+    var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
+  }
+  
   return (
     <View style={styles.container}>
         <View style={styles.containerWrapper}>
@@ -61,10 +70,12 @@ const Email = ({ navigation }) => {
           </View>
         <View>
       </View>
-    <View>
-      { isSelected && isLineAgree && isUserAgree ? 
-      <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ setIsVisible(true)}}/>
-      :<Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ ToastAndroid.show("체크를 완료해주세요.", 1) }}/>
+    <View> 
+      { isEmail ?  
+        isSelected && isLineAgree && isUserAgree ? 
+          <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ setIsVisible(true)}}/>
+          :<Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ ToastAndroid.show("체크를 완료해주세요.", 1) }}/>
+        :  <Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 40 }} onPress={()=>{ ToastAndroid.show("정확한 이메일을 입력해주세요.", 1) }}/>
       }
     </View>
     <CustomModal visible={isVisible} >
