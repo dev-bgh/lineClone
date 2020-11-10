@@ -56,7 +56,7 @@ const Pass = ({ navigation }) => {
     <View>
       { 
       isPass ? 
-        pass === passCehck ? <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ navigation.navigate('ChatHome') }}/>
+        pass === passCehck ? <Icon name="arrow-circle-right" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ navigation.navigate('ChatRouter') }}/>
                            : <Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ ToastAndroid.show("비밀번호가 같지 않습니다.", 1) }}/>
        : <Icon name="exclamation" size={60} style={{ position:"relative", left: 150, margin: 30 }} onPress={()=>{ ToastAndroid.show("비밀번호는 최소 6자리에 영문자와 숫자가 최소 하나씩 포함되어야 합니다.", 1) }}/>}
     </View>
