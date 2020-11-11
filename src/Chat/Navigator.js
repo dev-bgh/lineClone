@@ -29,7 +29,6 @@ const TabBarIcon = (focused) => {
           tabBarIcon: ({ focused }) => 
             TabBarIcon(focused),
         }}
-        
       >
         <Tab.Screen
           name="친구"

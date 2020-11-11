@@ -5,7 +5,56 @@ import img from '../assets/image/default.png';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Friend = ({ navigation }) => {
+  const [ isGroup, setIsGroup ] = useState(false); 
+  const [ isFriend, setIsFriend ] = useState(false); 
 
+  const test = [ 
+    {
+      testimg: img,
+      name: "테스트1"
+    },
+    {
+      testimg: img,
+      name: "테스트2"
+    },
+    {
+      testimg: img,
+      name: "테스트3"
+    },
+    {
+      testimg: img,
+      name: "테스트4"
+    },
+    {
+      testimg: img,
+      name: "테스트5"
+    },
+
+  ] 
+
+  const test1 = [ 
+    {
+      testimg: img,
+      name: "테스트1"
+    },
+    {
+      testimg: img,
+      name: "테스트2"
+    },
+    {
+      testimg: img,
+      name: "테스트3"
+    },
+    {
+      testimg: img,
+      name: "테스트4"
+    },
+    {
+      testimg: img,
+      name: "테스트5"
+    },
+
+  ] 
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
@@ -29,20 +78,64 @@ const Friend = ({ navigation }) => {
         </View>
 
         <View style={styles.myGroup}> 
-          <TouchableOpacity style={styles.myGroupWrapper}>
+          <TouchableOpacity style={styles.myGroupWrapper} onPress={ ()=> setIsGroup(!isGroup)}>
             <Icon name="users" size={20} style={{ marginLeft: 15, marginRight: 10}}/>
             <Text>그룹</Text>
-            <Icon name="chevron-down" size={15} style={{ marginLeft: 300, marginRight: 10}}/>
+            {isGroup ? 
+              <Icon name="chevron-down" size={15} style={{ marginLeft: 300, marginRight: 10}}/>
+              :
+              <Icon name="chevron-up" size={15} style={{ marginLeft: 300, marginRight: 10}} />
+            }
           </TouchableOpacity>
         </View>
-
+        {isGroup ? 
+          <View >
+              {test.map((data, index) => { 
+                return ( 
+                <TouchableOpacity style={styles.myGroupStyle} key={index}>
+                  <View>
+                    <Image source={data.testimg} style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 30}} />
+                    </View>
+                    <View style={{ justifyContent: "center", alignItems: "center", marginLeft: 10 }}>
+                    <Text>{data.name}</Text>
+                  </View>
+                </TouchableOpacity>
+                )
+              })}
+          </View>
+            :
+          <View/>
+        }
         <View style={styles.myFriend}> 
-          <TouchableOpacity style={styles.myFriendWrapper} >
+          <TouchableOpacity style={styles.myFriendWrapper} onPress={()=> setIsFriend (!isFriend)}>
             <Icon name="user" size={20} style={{ marginLeft: 27, marginRight: 15}}/>
             <Text>친구</Text>
-            <Icon name="chevron-down" size={15} style={{ marginLeft: 300, marginRight: 10}}/>
+            {isFriend ? 
+              <Icon name="chevron-down" size={15} style={{ marginLeft: 300, marginRight: 10}} />
+                :
+              <Icon name="chevron-up" size={15} style={{ marginLeft: 300, marginRight: 10}} />
+            }
           </TouchableOpacity>
         </View>
+        {isFriend ? 
+          <View >
+            <Text>111</Text>
+             {test1.map((datas, index) => { 
+                return ( 
+                <TouchableOpacity style={styles.myGroupStyle} key={index}>
+                  <View>
+                    <Image source={datas.testimg} style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 30}} />
+                    </View>
+                    <View style={{ justifyContent: "center", alignItems: "center", marginLeft: 10 }}>
+                    <Text>{datas.name}1</Text>
+                  </View>
+                </TouchableOpacity>
+                )
+              })}
+          </View>
+            :
+          <View/>
+        }
       </ScrollView>
     </View>
     // 
@@ -113,6 +206,13 @@ const styles = StyleSheet.create({
     borderBottomColor: '#627193',
     borderBottomWidth: 0.5,
     margin: 10
+  },
+  myGroupStyle: {
+    marginTop: 2,
+    marginBottom: 2,
+    flexDirection: 'row',
+    width: "100%",
+    height: 50,
   },
   myFriend: {
     width: "100%",
