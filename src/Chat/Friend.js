@@ -55,6 +55,14 @@ const Friend = ({ navigation }) => {
     },
 
   ] 
+
+  const myProfileData = 
+    {
+      testimg: img,
+      name: "테스트1"
+    }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.banner}>
@@ -70,10 +78,10 @@ const Friend = ({ navigation }) => {
         </View>
         <View style={styles.myProfile}> 
           <TouchableOpacity style={styles.myProfileWrapper}>
-            <Image source={img} style={styles.myProfileImg}/> 
+            <Image source={myProfileData.testimg} style={styles.myProfileImg}/> 
           </TouchableOpacity>
           <TouchableOpacity style={styles.myProfileTextWrapper}>
-            <Text style={styles.myProfileText}>테스트계정</Text>
+            <Text style={styles.myProfileText}>{myProfileData.name}</Text>
           </TouchableOpacity>
         </View>
 
@@ -119,7 +127,6 @@ const Friend = ({ navigation }) => {
         </View>
         {isFriend ? 
           <View >
-            <Text>111</Text>
              {test1.map((datas, index) => { 
                 return ( 
                 <TouchableOpacity style={styles.myGroupStyle} key={index}>
@@ -127,7 +134,7 @@ const Friend = ({ navigation }) => {
                     <Image source={datas.testimg} style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 30}} />
                     </View>
                     <View style={{ justifyContent: "center", alignItems: "center", marginLeft: 10 }}>
-                    <Text>{datas.name}1</Text>
+                    <Text>{datas.name}</Text>
                   </View>
                 </TouchableOpacity>
                 )
@@ -216,7 +223,7 @@ const styles = StyleSheet.create({
   },
   myFriend: {
     width: "100%",
-    height: "100%",
+    height: 30,
   },
   myFriendWrapper: {
     flexDirection: "row",
