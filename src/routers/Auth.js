@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, SafeAreaView, Text, TouchableOpacity, StyleSheet, Image, ToastAndroid, ScrollView, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import CheckBox from '@react-native-community/checkbox';
-import CustomModal, { ModalAsk } from '../components/CustomModal';
 
 const Auth = ({ navigation }) => {
   const [ auth, setAuth ] = useState("");

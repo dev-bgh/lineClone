@@ -34,6 +34,7 @@ const Chat = ({ navigation }) => {
   ]
   
   function clickChat( data, index) {
+    navigation.navigate('ChatHome')
     console.log("데이터",data,index);
   }
 
