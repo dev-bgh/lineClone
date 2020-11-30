@@ -17,7 +17,7 @@ enableScreens();
 const Stack = createNativeStackNavigator();
 
 function Router() {
-    return (
+  return (
         <NavigationContainer>
             <Stack.Navigator 
                 initialRouteName="ChatRouter"
